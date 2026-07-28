@@ -12,10 +12,50 @@ const chaosData = [
   { icon: Users, label: "Community" },
 ];
 
-export default function WhoWeHelp() {
+const optAContent = [
+  {
+    badge: "Brands ✦ Go Viral",
+    stat: "3x Conv. Rate",
+    title: "Launch Campus Campaigns",
+    desc: "Run high-converting, viral content drives across major student networks and subcultures to dominate student word-of-mouth.",
+  },
+  {
+    badge: "Creators ✦ Get Sponsored",
+    stat: "Direct Collabs",
+    title: "Get Paid To Create",
+    desc: "Match directly with high-quality brands and execute sponsored campaigns with pre-structured, transparent brief templates.",
+  },
+  {
+    badge: "Businesses ✦ Local Scaling",
+    stat: "Local Power",
+    title: "Deploy Ambassador Armies",
+    desc: "Build and scale your local sales pipeline by deploying high-energy student ambassadors to acquire new customers at low cost.",
+  },
+  {
+    badge: "Colleges ✦ Fest Funding",
+    stat: "Fast Funding",
+    title: "Fund Campus Events",
+    desc: "Pitch directly to corporate brands and secure major fest sponsorships in under 2 weeks, leaving paper forms behind.",
+  },
+  {
+    badge: "Events ✦ Experiential",
+    stat: "Packed Seats",
+    title: "Sell Out Your Stages",
+    desc: "Turn college fests, local shows, and student gatherings into experiential brand advertising channels while driving sold-out attendance.",
+  },
+  {
+    badge: "Communities ✦ Perks",
+    stat: "Active Hubs",
+    title: "Unlock Exclusive Deals",
+    desc: "Provide your community members with high-value brand perks, custom merchandise partnerships, and active professional sponsorships.",
+  },
+];
+
+export default function WhoWeHelp({ isOptionA = false }) {
   const [ordered, setOrdered] = useState(false);
   const [dimensions, setDimensions] = useState({ w: 0, h: 0 });
   const [scatterCoords, setScatterCoords] = useState([]);
+  const [activeIndex, setActiveIndex] = useState(0);
   const stageRef = useRef(null);
 
   useEffect(() => {
@@ -174,20 +214,39 @@ export default function WhoWeHelp() {
               };
             }
 
+            const isActive = activeIndex === i;
+            const nodeDimen = isOptionA 
+              ? (isActive ? "88px" : "74px")
+              : "64px";
+            const iconSize = isOptionA 
+              ? (isActive ? "34px" : "28px")
+              : "26px";
+
             return (
               <div
                 key={i}
-                className="chaos-node"
+                className={`chaos-node ${isActive ? "active" : ""}`}
+                onClick={() => {
+                  setOrdered(true);
+                  setActiveIndex(i);
+                }}
+                onMouseEnter={() => {
+                  setOrdered(true);
+                  setActiveIndex(i);
+                }}
                 style={{
                   position: "absolute",
                   transform: "translate(-50%, -50%)",
-                  transition: "left 1.4s var(--ease), top 1.4s var(--ease)",
+                  transition: "left 1.4s var(--ease), top 1.4s var(--ease), width 0.3s var(--ease-soft), height 0.3s var(--ease-soft)",
                   display: "flex",
                   flexDirection: "column",
                   alignItems: "center",
                   justifyContent: "center",
-                  width: "64px",
-                  height: "64px",
+                  width: nodeDimen,
+                  height: nodeDimen,
+                  cursor: "pointer",
+                  zIndex: isActive ? 20 : 10,
+                  opacity: isOptionA && !isActive ? 0.75 : 1,
                   ...style,
                 }}
               >
@@ -195,13 +254,26 @@ export default function WhoWeHelp() {
                   className="cn-icon"
                   style={{
                     margin: 0,
-                    width: "64px",
-                    height: "64px",
+                    width: nodeDimen,
+                    height: nodeDimen,
+                    transition: "width 0.3s var(--ease-soft), height 0.3s var(--ease-soft)",
                   }}
                 >
-                  <Icon style={{ width: "26px", height: "26px", color: "var(--burgundy)" }} />
+                  <Icon style={{ 
+                    width: iconSize, 
+                    height: iconSize, 
+                    color: isActive ? "var(--burgundy-hover)" : "var(--burgundy)",
+                    transition: "width 0.3s var(--ease-soft), height 0.3s var(--ease-soft)"
+                  }} />
                 </div>
-                <span style={textStyle}>{item.label}</span>
+                <span style={{
+                  ...textStyle,
+                  fontWeight: isActive ? 800 : 600,
+                  color: isActive ? "var(--burgundy)" : "var(--ink-soft)",
+                  transition: "all 0.3s var(--ease-soft)",
+                }}>
+                  {item.label}
+                </span>
               </div>
             );
           })}
@@ -212,32 +284,62 @@ export default function WhoWeHelp() {
           <h2>
             Different Goals
             <br />
-            <em>One Connected Ecosystem</em>
+            {isOptionA ? <span>One Connected <em>Ecosystem</em></span> : <em>One Connected Ecosystem</em>}
           </h2>
-          <p style={{ marginTop: "18px", color: "var(--ink-soft)", fontSize: "15.5px" }}>
-            Brands, creators, businesses, colleges, and communities all grow differently—but they
-            grow better together. CBD brings together the people and organizations that drive ideas
-            forward. Whether you're looking to build your brand, find meaningful collaborations,
-            secure sponsorships, grow a community, or create unforgettable experiences, we help the
-            right people find each other.
-          </p>
-          <ul className="problem-list">
-            <li>Brands looking to build authentic reach and lasting partnerships.</li>
-            <li>Creators and influencers seeking meaningful collaboration opportunities.</li>
-            <li>Startups and businesses ready to grow through strategy and community.</li>
-            <li>Colleges and student societies building impactful events and initiatives.</li>
-            <li>Event organizers connecting with sponsors, speakers, and partners.</li>
-            <li>Communities and organizations creating stronger professional networks.</li>
-          </ul>
-          <p style={{ marginTop: "18px", color: "var(--ink-soft)", fontSize: "15.5px" }}>
-            Whether you're launching a campaign, planning an event, growing a business, or building a
-            community, CBD creates an ecosystem where opportunities become conversations,
-            conversations become partnerships, and partnerships create lasting growth.
-          </p>
+          {isOptionA ? (
+            <div className="opt-a-detail-container" style={{ marginTop: "24px" }}>
+              {/* Dynamic details card replacing static grid list */}
+              <div className="opt-a-detail-card" key={activeIndex}>
+                <div className="opt-a-detail-header">
+                  <span className="opt-a-detail-badge">
+                    {optAContent[activeIndex].badge}
+                  </span>
+                  <span className="opt-a-detail-stat">
+                    {optAContent[activeIndex].stat}
+                  </span>
+                </div>
+                
+                <h3 className="opt-a-detail-title">
+                  {optAContent[activeIndex].title}
+                </h3>
+                
+                <p className="opt-a-detail-desc">
+                  {optAContent[activeIndex].desc}
+                </p>
 
-          <p className="problem-close">
-            Because every meaningful collaboration starts with the right introduction.
-          </p>
+                <div className="opt-a-detail-footer">
+                  <span>Target: {chaosData[activeIndex].label}s</span>
+                  <span className="arrow">✦ Click or Hover Nodes to Explore</span>
+                </div>
+              </div>
+            </div>
+          ) : (
+            <>
+              <p style={{ marginTop: "18px", color: "var(--ink-soft)", fontSize: "15.5px" }}>
+                Brands, creators, businesses, colleges, and communities all grow differently—but they
+                grow better together. CBD brings together the people and organizations that drive ideas
+                forward. Whether you're looking to build your brand, find meaningful collaborations,
+                secure sponsorships, grow a community, or create unforgettable experiences, we help the
+                right people find each other.
+              </p>
+              <ul className="problem-list">
+                <li>Brands looking to build authentic reach and lasting partnerships.</li>
+                <li>Creators and influencers seeking meaningful collaboration opportunities.</li>
+                <li>Startups and businesses ready to grow through strategy and community.</li>
+                <li>Colleges and student societies building impactful events and initiatives.</li>
+                <li>Event organizers connecting with sponsors, speakers, and partners.</li>
+                <li>Communities and organizations creating stronger professional networks.</li>
+              </ul>
+              <p style={{ marginTop: "18px", color: "var(--ink-soft)", fontSize: "15.5px" }}>
+                Whether you're launching a campaign, planning an event, growing a business, or building a
+                community, CBD creates an ecosystem where opportunities become conversations,
+                conversations become partnerships, and partnerships create lasting growth.
+              </p>
+              <p className="problem-close">
+                Because every meaningful collaboration starts with the right introduction.
+              </p>
+            </>
+          )}
         </div>
       </div>
     </section>

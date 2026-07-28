@@ -1,5 +1,6 @@
 import { Playfair_Display, Cormorant_Garamond, Manrope } from "next/font/google";
 import "./globals.css";
+import VersionSwitcher from "@/components/VersionSwitcher";
 
 const playfair = Playfair_Display({
   subsets: ["latin"],
@@ -34,7 +35,11 @@ export default function RootLayout({ children }) {
       lang="en"
       className={`${playfair.variable} ${cormorant.variable} ${manrope.variable}`}
     >
-      <body>{children}</body>
+      <body>
+        {children}
+        <VersionSwitcher />
+      </body>
     </html>
   );
 }
+
