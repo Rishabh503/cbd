@@ -19,9 +19,9 @@ export default function VersionSwitcher() {
       desc: "Current elegant editorial layout",
     },
     {
-      id: "option-a",
-      name: "Option A: Bento Brutalism",
-      path: "/option-a",
+      id: "v2",
+      name: "Option v2: Bento Brutalism",
+      path: "/v2",
       icon: Wand2,
       color: "var(--burgundy)",
       desc: "Bold grid-locked kinetic vibe",

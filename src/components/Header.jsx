@@ -65,13 +65,10 @@ export default function Header() {
             className="logo"
             aria-label="CBD — Connect. Buzz. Disrupt."
           >
-            <div className="logo-container" style={{ display: "flex", alignItems: "center", gap: "10px" }}>
-              <div style={{ width: "36px", height: "26px" }}>
-                <Logo showWordmark={false} />
+            <div className="logo-container" style={{ display: "flex", alignItems: "center" }}>
+              <div style={{ width: "52px", height: "42px" }}>
+                <Logo showWordmark={true} />
               </div>
-              <span className="logo-kicker" style={{ fontSize: "11px", letterSpacing: "0.15em", textTransform: "uppercase", fontWeight: 700 }}>
-                Connect · Buzz · Disrupt
-              </span>
             </div>
           </a>
 

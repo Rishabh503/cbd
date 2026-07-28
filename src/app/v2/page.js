@@ -11,7 +11,7 @@ import Verticals from "@/components/Verticals";
 import Testimonials from "@/components/Testimonials";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
-import "./option-a.css";
+import "./v2.css";
 
 export default function OptionAPage() {
   useEffect(() => {
