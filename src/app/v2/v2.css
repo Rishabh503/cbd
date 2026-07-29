@@ -1044,10 +1044,21 @@
 .opt-a-body footer {
   border-top: 3.5px solid var(--ink) !important;
   background: var(--burgundy-deep) !important;
+  padding: 44px 0 28px !important;
+}
+
+.opt-a-body .footer-nav {
+  margin-top: 24px !important;
+  gap: 20px 30px !important;
+}
+
+.opt-a-body .footer-social {
+  margin-top: 20px !important;
 }
 
 .opt-a-body .footer-rule {
   border-top: 2px dashed rgba(248, 244, 241, 0.25) !important;
+  margin: 20px 0 !important;
 }
 
 .opt-a-body .cbd-cursor {

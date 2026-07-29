@@ -49,7 +49,7 @@ export default function Footer() {
   return (
     <footer>
       <div className="container footer-inner">
-        <div style={{ width: "180px", height: "144px", margin: "0 auto 24px" }}>
+        <div style={{ width: "140px", height: "112px", margin: "0 auto 16px" }}>
           <Logo />
         </div>
 
@@ -68,6 +68,14 @@ export default function Footer() {
           </a>
           <a href="#contact" onClick={(e) => handleLinkClick(e, "contact")}>
             Contact
+          </a>
+          <a 
+            href="https://forms.gle/Lu9Ln39MDLMdrLJE7" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            style={{ fontWeight: "700", color: "var(--gold)" }}
+          >
+            Join Our Team
           </a>
         </nav>
 
