@@ -1,0 +1,110 @@
+[
+  {
+    "id": 1,
+    "class": "t-card-1",
+    "logoKey": "csi",
+    "logoUrl": "/csilogo.webp",
+    "iconPos": "top-left",
+    "dotPos": "top-right",
+    "title": "CSI Collaboration",
+    "quote": "Working with CBD was a wonderful experience. The team was approachable, well-coordinated, and genuinely committed to making every collaboration meaningful and smooth.",
+    "author": "Vidhi Jain",
+    "role": "Computer Society of India (CSI), MAIT"
+  },
+  {
+    "id": 2,
+    "class": "t-card-2",
+    "logoKey": "aws",
+    "logoUrl": "/aws.png",
+    "iconPos": "bottom-left",
+    "dotPos": "bottom-right",
+    "title": "AWS Hub",
+    "quote": "CBD brought professionalism and great energy to every interaction. Their planning, execution, and collaborative approach made it a pleasure working together.",
+    "author": "Shubham Jha",
+    "role": "AWS Student Builder Group, MAIT"
+  },
+  {
+    "id": 3,
+    "class": "t-card-3",
+    "logoKey": "comedian",
+    "logoUrl": "https://img.icons8.com/color/96/microphone.png",
+    "iconPos": "top-left",
+    "dotPos": "top-right",
+    "title": "Creator Engagement",
+    "quote": "The team made everything effortless. From coordination to execution, the entire experience felt well-managed, and I really enjoyed collaborating with them.",
+    "author": "Pranav Sharma",
+    "role": "Stand-up Comedian"
+  },
+  {
+    "id": 4,
+    "class": "t-card-4",
+    "logoKey": "techDept",
+    "logoUrl": "/mait.png",
+    "iconPos": "top-right",
+    "dotPos": "top-left",
+    "title": "Department Session",
+    "quote": "CBD has consistently delivered well-planned sessions with professionalism and attention to detail. Their commitment to creating value for students truly stands out.",
+    "author": "Bhoomi Gupta",
+    "role": "ITE & CSE Department"
+  },
+  {
+    "id": 5,
+    "class": "t-card-5",
+    "logoKey": "dean",
+    "logoUrl": "/mait.png",
+    "iconPos": "bottom-left",
+    "dotPos": "bottom-right",
+    "title": "Academic Research",
+    "quote": "It is encouraging to see a team that approaches every initiative with dedication, professionalism, and a genuine intent to create meaningful opportunities for students.",
+    "author": "Prof. Sachin Gupta",
+    "role": "Dean, Research & Development, MAIT"
+  },
+  {
+    "id": 6,
+    "class": "t-card-6",
+    "logoKey": "aids",
+    "logoUrl": "/mait.png",
+    "iconPos": "top-left",
+    "dotPos": "top-right",
+    "title": "Tech Outreach",
+    "quote": "CBD has always been dependable. Their ability to execute impactful sessions while maintaining excellent coordination is highly appreciated.",
+    "author": "Prof. Vinay Kumar Saini",
+    "role": "AIDS Department"
+  },
+  {
+    "id": 7,
+    "class": "t-card-7",
+    "logoKey": "mercedes",
+    "logoUrl": "/merc.png",
+    "iconPos": "bottom-left",
+    "dotPos": "bottom-right",
+    "title": "Brand Partner",
+    "quote": "Collaborating with CBD was a smooth and enriching experience. Their professionalism and thoughtful execution made the engagement seamless from start to finish.",
+    "author": "Amit Chand",
+    "role": "Marketing Leader, Mercedes-Benz"
+  },
+  {
+    "id": 8,
+    "class": "t-card-8",
+    "logoKey": "pvr",
+    "logoUrl": "/pvr.png",
+    "iconPos": "top-right",
+    "dotPos": "top-left",
+    "title": "Entertainment Partnership",
+    "quote": "CBD’s team was extremely well-organized and easy to work with. Their focus on delivering quality experiences made the collaboration truly enjoyable.",
+    "author": "Suraj Mishra",
+    "role": "Deputy Vice President, PVR INOX"
+  },
+  {
+    "id": 9,
+    "class": "t-card-9",
+    "logoKey": "pizzahut",
+    "logoUrl": "https://res.cloudinary.com/dzvdh7yez/image/upload/f_auto,q_auto,w_250/v1724785424/pizza_hut_yss9fg.png",
+    "iconPos": "top-left",
+    "dotPos": "top-right",
+    "title": "Brand Campaign",
+    "quote": "Our collaboration with CBD was seamless. Their team handled everything professionally and ensured a smooth experience while creating great engagement for our brand.",
+    "author": "Pizza Hut",
+    "role": "Global Food Chain Network"
+  }
+]

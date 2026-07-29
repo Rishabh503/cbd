@@ -57,6 +57,7 @@ export default function WhoWeHelp({ isOptionA = false }) {
   const [scatterCoords, setScatterCoords] = useState([]);
   const [activeIndex, setActiveIndex] = useState(0);
   const stageRef = useRef(null);
+  const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
     const coords = chaosData.map(() => ({
@@ -73,6 +74,7 @@ export default function WhoWeHelp({ isOptionA = false }) {
       w: stage.offsetWidth,
       h: stage.offsetHeight,
     });
+    setIsMobile(window.innerWidth < 768);
   };
 
   useEffect(() => {
@@ -87,6 +89,7 @@ export default function WhoWeHelp({ isOptionA = false }) {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
             setOrdered(true);
+            stage.classList.add("in");
             setDimensions({
               w: entry.target.offsetWidth,
               h: entry.target.offsetHeight,
@@ -95,7 +98,7 @@ export default function WhoWeHelp({ isOptionA = false }) {
           }
         });
       },
-      { threshold: 0.15 }
+      { threshold: 0.05 }
     );
 
     observer.observe(stage);
@@ -108,7 +111,7 @@ export default function WhoWeHelp({ isOptionA = false }) {
 
   const cx = dimensions.w / 2;
   const cy = dimensions.h / 2;
-  const r = Math.min(dimensions.w, dimensions.h) * 0.34;
+  const r = Math.min(dimensions.w, dimensions.h) * (isMobile ? 0.26 : 0.36);
 
   const getOrderedCoords = (i) => {
     const angle = (Math.PI * 2 * i) / chaosData.length - Math.PI / 2;
@@ -174,13 +177,13 @@ export default function WhoWeHelp({ isOptionA = false }) {
               transition: "all 1.4s var(--ease)",
             };
 
-            if (ordered && dimensions.w > 0) {
+            if (ordered && !isMobile) {
               if (i === 1 || i === 2) {
                 // Right-side nodes (Creator, Business) -> text to the right
                 textStyle = {
                   ...textStyle,
                   left: "100%",
-                  marginLeft: "12px",
+                  marginLeft: "14px",
                   top: "50%",
                   transform: "translateY(-50%)",
                 };
@@ -189,26 +192,35 @@ export default function WhoWeHelp({ isOptionA = false }) {
                 textStyle = {
                   ...textStyle,
                   right: "100%",
-                  marginRight: "12px",
+                  marginRight: "14px",
                   top: "50%",
                   transform: "translateY(-50%)",
                 };
+              } else if (i === 0) {
+                // Top node (Brand) -> text above
+                textStyle = {
+                  ...textStyle,
+                  bottom: "100%",
+                  marginBottom: "14px",
+                  left: "50%",
+                  transform: "translateX(-50%)",
+                };
               } else {
-                // Top/Bottom nodes (Brand, College) -> text below
+                // Bottom node (College) -> text below
                 textStyle = {
                   ...textStyle,
                   top: "100%",
-                  marginTop: "8px",
+                  marginTop: "14px",
                   left: "50%",
                   transform: "translateX(-50%)",
                 };
               }
             } else {
-              // Scattered layout -> text below
+              // Scattered layout or mobile -> text below
               textStyle = {
                 ...textStyle,
                 top: "100%",
-                marginTop: "8px",
+                marginTop: "10px",
                 left: "50%",
                 transform: "translateX(-50%)",
               };
@@ -216,11 +228,11 @@ export default function WhoWeHelp({ isOptionA = false }) {
 
             const isActive = activeIndex === i;
             const nodeDimen = isOptionA 
-              ? (isActive ? "88px" : "74px")
-              : "64px";
+              ? (isActive ? "96px" : "80px")
+              : "72px";
             const iconSize = isOptionA 
-              ? (isActive ? "34px" : "28px")
-              : "26px";
+              ? (isActive ? "38px" : "32px")
+              : "28px";
 
             return (
               <div
@@ -268,8 +280,9 @@ export default function WhoWeHelp({ isOptionA = false }) {
                 </div>
                 <span style={{
                   ...textStyle,
-                  fontWeight: isActive ? 800 : 600,
-                  color: isActive ? "var(--burgundy)" : "var(--ink-soft)",
+                  fontWeight: 800,
+                  fontSize: isOptionA ? (isActive ? "14.5px" : "12.5px") : "12.5px",
+                  color: isActive ? "var(--burgundy)" : "var(--ink)",
                   transition: "all 0.3s var(--ease-soft)",
                 }}>
                   {item.label}

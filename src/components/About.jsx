@@ -18,11 +18,12 @@ export default function About() {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
             setFolderOpen(true);
+            stage.classList.add("in");
             observer.unobserve(entry.target);
           }
         });
       },
-      { threshold: 0.15 }
+      { threshold: 0.05 }
     );
 
     observer.observe(stage);
@@ -191,12 +192,6 @@ export default function About() {
               );
             })}
 
-            <div className="folder-base">
-              <svg viewBox="0 0 200 130" preserveAspectRatio="xMidYMax meet">
-                <path d="M4 30 L70 30 L84 44 L196 44 L196 122 L4 122 Z" fill="#E4D4C7" stroke="#D8C5B8" />
-                <path d="M2 44 L198 44 L198 126 L2 126 Z" fill="#EEE3D8" stroke="#D8C5B8" />
-              </svg>
-            </div>
           </div>
 
           {/* Interactive controls */}

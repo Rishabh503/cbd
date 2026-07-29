@@ -3,7 +3,7 @@
 import { useEffect } from "react";
 import CustomCursor from "@/components/CustomCursor";
 import Header from "@/components/Header";
-import HeroA from "@/components/HeroA";
+import Hero from "@/components/Hero";
 import About from "@/components/About";
 import WhoWeHelp from "@/components/WhoWeHelp";
 import HowItWorks from "@/components/HowItWorks";
@@ -11,11 +11,8 @@ import Verticals from "@/components/Verticals";
 import Testimonials from "@/components/Testimonials";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
-import PartnerLogos from "@/components/PartnerLogos";
-import KineticTicker from "@/components/KineticTicker";
-import "./v2.css";
 
-export default function OptionAPage() {
+export default function Home() {
   useEffect(() => {
     const revealEls = document.querySelectorAll(".reveal");
     const revealObserver = new IntersectionObserver(
@@ -32,34 +29,28 @@ export default function OptionAPage() {
 
     revealEls.forEach((el) => revealObserver.observe(el));
 
-    // Force a scroll-based indicator for option page if needed
-    document.body.className = "opt-a-body";
-
     return () => {
       revealObserver.disconnect();
-      document.body.className = "";
     };
   }, []);
 
   return (
-    <div className="opt-a-body">
+    <>
       <a href="#main" className="skip-link">
         Skip to content
       </a>
       <CustomCursor />
       <Header />
       <main id="main">
-        <HeroA />
-        <PartnerLogos />
+        <Hero />
         <About />
-        <WhoWeHelp isOptionA={true} />
+        <WhoWeHelp />
         <HowItWorks />
         <Verticals />
-        <KineticTicker />
         <Testimonials />
         <Contact />
       </main>
       <Footer />
-    </div>
+    </>
   );
 }

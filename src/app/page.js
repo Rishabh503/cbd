@@ -3,7 +3,7 @@
 import { useEffect } from "react";
 import CustomCursor from "@/components/CustomCursor";
 import Header from "@/components/Header";
-import Hero from "@/components/Hero";
+import HeroA from "@/components/HeroA";
 import About from "@/components/About";
 import WhoWeHelp from "@/components/WhoWeHelp";
 import HowItWorks from "@/components/HowItWorks";
@@ -11,6 +11,9 @@ import Verticals from "@/components/Verticals";
 import Testimonials from "@/components/Testimonials";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
+import PartnerLogos from "@/components/PartnerLogos";
+import KineticTicker from "@/components/KineticTicker";
+import "./v2/v2.css";
 
 export default function Home() {
   useEffect(() => {
@@ -29,28 +32,34 @@ export default function Home() {
 
     revealEls.forEach((el) => revealObserver.observe(el));
 
+    // Force a scroll-based indicator for option page if needed
+    document.body.className = "opt-a-body";
+
     return () => {
       revealObserver.disconnect();
+      document.body.className = "";
     };
   }, []);
 
   return (
-    <>
+    <div className="opt-a-body">
       <a href="#main" className="skip-link">
         Skip to content
       </a>
       <CustomCursor />
       <Header />
       <main id="main">
-        <Hero />
+        <HeroA />
+        <PartnerLogos />
         <About />
-        <WhoWeHelp />
+        <WhoWeHelp isOptionA={true} />
         <HowItWorks />
         <Verticals />
+        <KineticTicker />
         <Testimonials />
         <Contact />
       </main>
       <Footer />
-    </>
+    </div>
   );
 }
