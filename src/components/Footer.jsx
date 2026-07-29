@@ -49,8 +49,8 @@ export default function Footer() {
   return (
     <footer>
       <div className="container footer-inner">
-        <div style={{ width: "110px", height: "88px", margin: "0 auto 24px" }}>
-          <Logo color="#FCFAF8" />
+        <div style={{ width: "180px", height: "144px", margin: "0 auto 24px" }}>
+          <Logo />
         </div>
 
         <nav className="footer-nav" aria-label="Footer">

@@ -66,8 +66,8 @@ export default function Header() {
             aria-label="CBD — Connect. Buzz. Disrupt."
           >
             <div className="logo-container" style={{ display: "flex", alignItems: "center" }}>
-              <div style={{ width: "52px", height: "42px" }}>
-                <Logo showWordmark={true} />
+              <div style={{ width: "58px", height: "46px" }}>
+                <Logo />
               </div>
             </div>
           </a>
