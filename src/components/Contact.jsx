@@ -39,6 +39,7 @@ const InstagramIcon = (props) => (
 export default function Contact() {
   const [formState, setFormState] = useState({ name: "", email: "", message: "" });
   const [submitted, setSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const cardRef = useRef(null);
 
   // 3D Tilt effect on hover
@@ -74,14 +75,46 @@ export default function Contact() {
     };
   }, []);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (!formState.name || !formState.email || !formState.message) return;
-    setSubmitted(true);
-    setTimeout(() => {
-      setSubmitted(false);
-      setFormState({ name: "", email: "", message: "" });
-    }, 4000);
+
+    const accessKey = process.env.NEXT_PUBLIC_WEB3FORMS_KEY;
+    if (!accessKey || accessKey === "YOUR_ACCESS_KEY_HERE") {
+      alert("Form submission requires a Web3Forms Access Key. Please add NEXT_PUBLIC_WEB3FORMS_KEY to your .env.local file.");
+      return;
+    }
+
+    setIsSubmitting(true);
+    try {
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify({
+          access_key: accessKey,
+          name: formState.name,
+          email: formState.email,
+          message: formState.message,
+          subject: `New Inquiry from ${formState.name} (CBD Website)`,
+        }),
+      });
+
+      const result = await response.json();
+      if (result.success) {
+        setSubmitted(true);
+        setFormState({ name: "", email: "", message: "" });
+      } else {
+        alert("Submission failed: " + (result.message || "Please try again or email us directly at contact@thecbd.in"));
+      }
+    } catch (error) {
+      console.error(error);
+      alert("Submission error. Please check your connection or email us directly at contact@thecbd.in");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const handleInputChange = (e) => {
@@ -170,8 +203,14 @@ export default function Contact() {
                   />
                 </div>
 
-                <button type="submit" className="btn btn-primary form-submit">
-                  Send Inquiry <Send style={{ width: "14px", height: "14px", marginLeft: "8px" }} />
+                <button type="submit" className="btn btn-primary form-submit" disabled={isSubmitting}>
+                  {isSubmitting ? (
+                    "Sending..."
+                  ) : (
+                    <>
+                      Send Inquiry <Send style={{ width: "14px", height: "14px", marginLeft: "8px" }} />
+                    </>
+                  )}
                 </button>
 
                 <div className="bc-divider" />
