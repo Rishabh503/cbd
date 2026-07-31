@@ -37,6 +37,8 @@
 html {
   scroll-behavior: smooth;
   height: 100%;
+  overflow-x: hidden;
+  max-width: 100%;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -59,6 +61,7 @@ body {
   overflow-x: hidden;
   position: relative;
   min-height: 100%;
+  max-width: 100%;
 }
 
 body::before {

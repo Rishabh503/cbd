@@ -151,32 +151,42 @@ export default function HowItWorks() {
               {milestonePts.map((pt, i) => {
                 const MilestoneIcon = milestones[i].icon;
                 const isActive = i <= activeIndex;
+                const isCurrentActive = i === activeIndex;
                 return (
                   <div
                     key={i}
-                    className={`milestone ${isActive ? "active" : ""}`}
+                    className={`milestone ${isActive ? "active" : ""} ${isCurrentActive ? "current-active" : ""}`}
                     style={{
                       left: `${(pt.x / vw) * 100}%`,
                       top: `${(pt.y / vh) * 100}%`,
                     }}
+                    onClick={() => setActiveIndex(i)}
+                    onMouseEnter={() => setActiveIndex(i)}
                   >
                     <div className="milestone-dot">
                       <MilestoneIcon style={{ width: "20px", height: "20px" }} />
                     </div>
                     <span>{milestones[i].label}</span>
+                    {isMobile && isCurrentActive && (
+                      <div className="milestone-desc-mobile">
+                        {milestones[i].desc}
+                      </div>
+                    )}
                   </div>
                 );
               })}
             </div>
           </div>
-          <div className="works-caption">
-            <div className="wc-label" id="wcLabel">
-              {milestones[activeIndex]?.label}
+          {!isMobile && (
+            <div className="works-caption">
+              <div className="wc-label" id="wcLabel">
+                {milestones[activeIndex]?.label}
+              </div>
+              <div className="wc-desc" id="wcDesc">
+                {milestones[activeIndex]?.desc}
+              </div>
             </div>
-            <div className="wc-desc" id="wcDesc">
-              {milestones[activeIndex]?.desc}
-            </div>
-          </div>
+          )}
         </div>
       </div>
     </section>

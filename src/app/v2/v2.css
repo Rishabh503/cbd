@@ -929,6 +929,11 @@
 }
 
 /* How It Works Section */
+.opt-a-body .milestone {
+  pointer-events: auto !important;
+  cursor: pointer !important;
+}
+
 .opt-a-body .milestone-dot {
   border: 2.5px solid var(--ink) !important;
   background: var(--cream) !important;
@@ -1269,6 +1274,13 @@
     max-height: 60px !important;
   }
 
+  .opt-a-body .site-header.scrolled {
+    top: 10px !important;
+    padding: 8px 16px !important;
+    max-height: 58px !important;
+    box-shadow: 4px 4px 0px var(--ink) !important;
+  }
+
   .opt-a-body .site-header.menu-open {
     max-height: 380px !important;
   }
@@ -1305,6 +1317,83 @@
     border: none !important;
     background: transparent !important;
     box-shadow: none !important;
+  }
+
+  /* Inline mobile milestone descriptions */
+  .opt-a-body .milestone {
+    width: auto !important;
+    max-width: 220px !important;
+    z-index: 50 !important;
+  }
+
+  .opt-a-body .milestone.current-active {
+    z-index: 100 !important;
+  }
+
+  .opt-a-body .milestone-desc-mobile {
+    background: var(--cream) !important;
+    border: 2px solid var(--ink) !important;
+    box-shadow: 3px 3px 0px var(--ink) !important;
+    border-radius: 8px !important;
+    padding: 8px 12px !important;
+    font-size: 11px !important;
+    line-height: 1.4 !important;
+    color: var(--ink) !important;
+    width: 200px !important;
+    text-align: center !important;
+    margin-top: 6px !important;
+    z-index: 110 !important;
+    pointer-events: auto !important;
+    animation: milestoneFadeIn 0.3s ease !important;
+  }
+
+  @keyframes milestoneFadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(5px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* Make main bento card and sub-grid cells look identical and taller on mobile */
+  .opt-a-body .bento-main-card,
+  .opt-a-body .bento-cell {
+    height: 320px !important;
+    border: 3px solid var(--ink) !important;
+    box-shadow: 4px 4px 0px var(--ink) !important;
+    border-radius: 14px !important;
+  }
+  
+  .opt-a-body .bento-main-card .bento-overlay,
+  .opt-a-body .bento-cell .bento-cell-overlay {
+    padding: 24px !important;
+    background: linear-gradient(to top, rgba(45, 38, 40, 0.9) 20%, rgba(45, 38, 40, 0.15) 70%, transparent 100%) !important;
+  }
+  
+  .opt-a-body .bento-main-card .bento-overlay .eyebrow {
+    display: none !important;
+  }
+  
+  .opt-a-body .bento-main-card .bento-overlay h3,
+  .opt-a-body .bento-cell .bento-cell-overlay h4 {
+    font-family: var(--serif) !important;
+    font-weight: 600 !important;
+    font-size: 18.5px !important;
+    margin-top: 0 !important;
+    margin-bottom: 6px !important;
+    line-height: 1.25 !important;
+  }
+  
+  .opt-a-body .bento-main-card .bento-overlay p,
+  .opt-a-body .bento-cell .bento-cell-overlay p {
+    font-family: var(--sans) !important;
+    font-size: 12.5px !important;
+    line-height: 1.5 !important;
+    color: var(--cream-soft) !important;
+    max-width: 95% !important;
   }
 }
 
@@ -1428,6 +1517,22 @@
   .partner-brand-logo-img {
     max-height: 36px !important;
     max-width: 100px !important;
+  }
+}
+
+/* Swap details copy to render above the card folders/nodes on mobile & tablet */
+@media (max-width: 959px) {
+  .opt-a-body .about-copy {
+    grid-row: 1 !important;
+  }
+  .opt-a-body .folder-stage-wrapper {
+    grid-row: 2 !important;
+  }
+  .opt-a-body .problem-copy {
+    grid-row: 1 !important;
+  }
+  .opt-a-body .chaos-stage {
+    grid-row: 2 !important;
   }
 }
 
