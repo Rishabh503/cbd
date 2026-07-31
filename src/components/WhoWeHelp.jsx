@@ -177,13 +177,14 @@ export default function WhoWeHelp({ isOptionA = false }) {
               transition: "all 1.4s var(--ease)",
             };
 
-            if (ordered && !isMobile) {
+            if (ordered) {
+              const labelMargin = isMobile ? "8px" : "14px";
               if (i === 1 || i === 2) {
                 // Right-side nodes (Creator, Business) -> text to the right
                 textStyle = {
                   ...textStyle,
                   left: "100%",
-                  marginLeft: "14px",
+                  marginLeft: labelMargin,
                   top: "50%",
                   transform: "translateY(-50%)",
                 };
@@ -192,7 +193,7 @@ export default function WhoWeHelp({ isOptionA = false }) {
                 textStyle = {
                   ...textStyle,
                   right: "100%",
-                  marginRight: "14px",
+                  marginRight: labelMargin,
                   top: "50%",
                   transform: "translateY(-50%)",
                 };
@@ -201,7 +202,7 @@ export default function WhoWeHelp({ isOptionA = false }) {
                 textStyle = {
                   ...textStyle,
                   bottom: "100%",
-                  marginBottom: "14px",
+                  marginBottom: labelMargin,
                   left: "50%",
                   transform: "translateX(-50%)",
                 };
@@ -210,13 +211,13 @@ export default function WhoWeHelp({ isOptionA = false }) {
                 textStyle = {
                   ...textStyle,
                   top: "100%",
-                  marginTop: "14px",
+                  marginTop: labelMargin,
                   left: "50%",
                   transform: "translateX(-50%)",
                 };
               }
             } else {
-              // Scattered layout or mobile -> text below
+              // Scattered layout -> text below
               textStyle = {
                 ...textStyle,
                 top: "100%",
@@ -228,11 +229,11 @@ export default function WhoWeHelp({ isOptionA = false }) {
 
             const isActive = activeIndex === i;
             const nodeDimen = isOptionA 
-              ? (isActive ? "96px" : "80px")
-              : "72px";
+              ? (isActive ? (isMobile ? "68px" : "96px") : (isMobile ? "54px" : "80px"))
+              : (isMobile ? "50px" : "72px");
             const iconSize = isOptionA 
-              ? (isActive ? "38px" : "32px")
-              : "28px";
+              ? (isActive ? (isMobile ? "24px" : "38px") : (isMobile ? "20px" : "32px"))
+              : (isMobile ? "18px" : "28px");
 
             return (
               <div
@@ -281,7 +282,7 @@ export default function WhoWeHelp({ isOptionA = false }) {
                 <span style={{
                   ...textStyle,
                   fontWeight: 800,
-                  fontSize: isOptionA ? (isActive ? "14.5px" : "12.5px") : "12.5px",
+                  fontSize: isMobile ? (isActive ? "12px" : "11px") : (isOptionA ? (isActive ? "14.5px" : "12.5px") : "12.5px"),
                   color: isActive ? "var(--burgundy)" : "var(--ink)",
                   transition: "all 0.3s var(--ease-soft)",
                 }}>

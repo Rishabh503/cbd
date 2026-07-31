@@ -98,7 +98,7 @@ export default function HeroA() {
                 
                 {/* Left side text and buttons */}
                 <div className="intro-left">
-                  <div style={{ display: "inline-flex", gap: "8px" }}>
+                  <div className="hero-badge-row" style={{ gap: "8px" }}>
                     <span style={{ fontSize: "11px", fontWeight: 800, background: "var(--sand)", border: "1.5px solid var(--ink)", padding: "4px 8px", borderRadius: "6px", textTransform: "uppercase" }}>
                       🚀 Disrupting Marketing
                     </span>

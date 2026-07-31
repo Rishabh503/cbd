@@ -57,7 +57,7 @@ export default function Header() {
 
   return (
     <>
-      <header className={`site-header ${scrolled ? "scrolled" : ""}`} id="siteHeader">
+      <header className={`site-header ${scrolled ? "scrolled" : ""} ${mobileOpen ? "menu-open" : ""}`} id="siteHeader">
         <div className="container nav-inner">
           <a
             href="#top"
@@ -114,61 +114,51 @@ export default function Header() {
           <button
             className="nav-toggle"
             id="navToggle"
-            aria-label="Open menu"
+            aria-label={mobileOpen ? "Close menu" : "Open menu"}
             aria-expanded={mobileOpen}
             aria-controls="mobileMenu"
-            onClick={() => setMobileOpen(true)}
+            onClick={() => setMobileOpen(!mobileOpen)}
           >
-            <Menu style={{ width: "18px", height: "18px" }} />
+            {mobileOpen ? (
+              <X style={{ width: "18px", height: "18px" }} />
+            ) : (
+              <Menu style={{ width: "18px", height: "18px" }} />
+            )}
           </button>
         </div>
-      </header>
 
-      <div className={`mobile-menu ${mobileOpen ? "open" : ""}`} id="mobileMenu">
-        <button
-          className="mobile-close"
-          id="mobileClose"
-          aria-label="Close menu"
-          onClick={() => setMobileOpen(false)}
-        >
-          <X style={{ width: "18px", height: "18px" }} />
-        </button>
-        <a
-          href="#about"
-          onClick={(e) => handleLinkClick(e, "about")}
-          className={activeSection === "about" ? "active" : ""}
-        >
-          About
-        </a>
-        <a
-          href="#problem"
-          onClick={(e) => handleLinkClick(e, "problem")}
-          className={activeSection === "problem" ? "active" : ""}
-        >
-          Who We Help
-        </a>
-        <a
-          href="#how-it-works"
-          onClick={(e) => handleLinkClick(e, "how-it-works")}
-          className={activeSection === "how-it-works" ? "active" : ""}
-        >
-          How CBD Works
-        </a>
-        <a
-          href="#verticals"
-          onClick={(e) => handleLinkClick(e, "verticals")}
-          className={activeSection === "verticals" ? "active" : ""}
-        >
-          Our Verticals
-        </a>
-        <a
-          href="#contact"
-          onClick={(e) => handleLinkClick(e, "contact")}
-          className={activeSection === "contact" ? "active" : ""}
-        >
-          Contact
-        </a>
-      </div>
+        {/* Mobile menu inside the header container for continuity */}
+        <div className={`mobile-menu ${mobileOpen ? "open" : ""}`} id="mobileMenu">
+          <a
+            href="#about"
+            onClick={(e) => handleLinkClick(e, "about")}
+            className={activeSection === "about" ? "active" : ""}
+          >
+            About
+          </a>
+          <a
+            href="#problem"
+            onClick={(e) => handleLinkClick(e, "problem")}
+            className={activeSection === "problem" ? "active" : ""}
+          >
+            Who We Help
+          </a>
+          <a
+            href="#how-it-works"
+            onClick={(e) => handleLinkClick(e, "how-it-works")}
+            className={activeSection === "how-it-works" ? "active" : ""}
+          >
+            How CBD Works
+          </a>
+          <a
+            href="#verticals"
+            onClick={(e) => handleLinkClick(e, "verticals")}
+            className={activeSection === "verticals" ? "active" : ""}
+          >
+            Our Verticals
+          </a>
+        </div>
+      </header>
     </>
   );
 }

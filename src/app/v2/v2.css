@@ -15,7 +15,8 @@
 
 /* Kinetic Ticker Marquee - Relative divider between Hero and About sections */
 .opt-a-marquee {
-  width: 100vw;
+  width: 100% !important;
+  max-width: 100% !important;
   background: var(--burgundy);
   border-top: 3px solid var(--ink);
   border-bottom: 3px solid var(--ink);
@@ -690,6 +691,12 @@
   border-radius: 32px !important;
   padding: 10px 24px !important;
   top: 16px !important; /* Pushed up to clear sticking space */
+  overflow: hidden !important;
+  max-height: 72px !important; /* Compact desktop height */
+  transition: max-height 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.4s ease,
+              background 0.4s ease,
+              top 0.4s ease !important;
 }
 
 .opt-a-body .site-header.scrolled {
@@ -698,25 +705,58 @@
   box-shadow: 6px 6px 0px var(--ink) !important;
   background: var(--cream) !important;
   padding: 8px 24px !important;
+  max-height: 64px !important;
 }
 
 .opt-a-body .nav-links a.active {
   color: var(--burgundy) !important;
 }
 
+/* Glass effect on Mobile screens for Contact button in Header */
 .opt-a-body .nav-cta.card-btn {
-  border: 2.5px solid var(--ink) !important;
-  box-shadow: 2.5px 2.5px 0px var(--ink) !important;
+  background: rgba(252, 250, 248, 0.45) !important;
+  backdrop-filter: blur(8px) !important;
+  -webkit-backdrop-filter: blur(8px) !important;
+  border: 1.5px solid rgba(45, 38, 40, 0.25) !important;
+  box-shadow: none !important;
+  color: var(--ink) !important;
   border-radius: 20px !important;
+  padding: 6px 12px !important;
+  font-size: 11px !important;
   font-weight: 800 !important;
-  padding: 8px 18px !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 6px !important;
+  transition: all 0.3s ease !important;
 }
 
 .opt-a-body .nav-cta.card-btn:hover {
-  transform: translate(-1.5px, -1.5px) !important;
-  box-shadow: 4px 4px 0px var(--ink) !important;
-  background: var(--burgundy) !important;
-  color: var(--cream) !important;
+  background: rgba(252, 250, 248, 0.7) !important;
+  transform: none !important;
+  box-shadow: none !important;
+}
+
+/* Brutalist style on larger screens (Desktop) */
+@media (min-width: 1024px) {
+  .opt-a-body .nav-cta.card-btn {
+    background: var(--cream) !important;
+    border: 2.5px solid var(--ink) !important;
+    box-shadow: 2.5px 2.5px 0px var(--ink) !important;
+    border-radius: 20px !important;
+    padding: 8px 18px !important;
+    font-size: 13px !important;
+    font-weight: 800 !important;
+    display: inline-flex !important;
+    gap: 8px !important;
+  }
+  
+  .opt-a-body .nav-cta.card-btn:hover {
+    transform: translate(-1.5px, -1.5px) !important;
+    box-shadow: 4px 4px 0px var(--ink) !important;
+    background: var(--burgundy) !important;
+    color: var(--ivory) !important;
+  }
 }
 
 /* Hide logo tagline/full-form text on Option A navbar */
@@ -1099,30 +1139,66 @@
    MOBILE RESPONSIVENESS AND COLLAPSIBLE MENU FOR V2
    ============================================================ */
 
-/* Mobile Menu styling in Bento Concept */
+/* Decorative & responsive elements */
+.opt-a-body .hero-badge-row {
+  display: inline-flex;
+}
+@media (max-width: 768px) {
+  .opt-a-body .hero-badge-row {
+    display: none !important;
+  }
+}
+
+/* Mobile Menu styling in Bento Concept - Expanding Drawer */
 .opt-a-body .mobile-menu {
-  background: var(--beige) !important;
-  display: flex !important;
+  position: static !important;
+  inset: auto !important;
+  background: transparent !important;
+  z-index: auto !important;
+  display: none !important;
   flex-direction: column !important;
   align-items: center !important;
   justify-content: center !important;
-  gap: 22px !important;
-  padding: 40px 20px !important;
+  gap: 14px !important;
+  padding: 20px 0 12px 0 !important;
+  width: 100% !important;
+  
+  opacity: 0 !important;
+  visibility: hidden !important;
+  transition: opacity 0.3s ease, visibility 0.3s ease !important;
+}
+
+.opt-a-body .site-header.menu-open .mobile-menu {
+  display: flex !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+@media (max-width: 1023px) {
+  .opt-a-body .site-header.menu-open {
+    max-height: 380px !important;
+  }
+}
+
+@media (min-width: 1024px) {
+  .opt-a-body .mobile-menu {
+    display: none !important;
+  }
 }
 
 .opt-a-body .mobile-menu a {
   font-family: var(--sans) !important;
-  font-size: clamp(16px, 5vw, 24px) !important;
+  font-size: clamp(14px, 4.5vw, 17px) !important;
   font-weight: 800 !important;
   text-transform: uppercase !important;
   color: var(--ink) !important;
   background: var(--cream) !important;
   border: 3px solid var(--ink) !important;
   border-radius: 12px !important;
-  padding: 14px 28px !important;
+  padding: 10px 20px !important;
   box-shadow: 4px 4px 0px var(--ink) !important;
-  width: 85% !important;
-  max-width: 320px !important;
+  width: 90% !important;
+  max-width: 280px !important;
   text-align: center !important;
   transition: all 0.2s cubic-bezier(0.19, 1, 0.22, 1) !important;
 }
@@ -1133,21 +1209,6 @@
   transform: translate(-3px, -3px) !important;
   box-shadow: 7px 7px 0px var(--ink) !important;
   color: var(--ink) !important;
-}
-
-.opt-a-body .mobile-close {
-  border: 3.5px solid var(--ink) !important;
-  background: var(--cream) !important;
-  box-shadow: 3px 3px 0px var(--ink) !important;
-  border-radius: 50% !important;
-  color: var(--ink) !important;
-  transition: all 0.2s ease !important;
-}
-
-.opt-a-body .mobile-close:hover {
-  transform: translate(-2px, -2px) !important;
-  box-shadow: 5px 5px 0px var(--ink) !important;
-  background: var(--border) !important;
 }
 
 /* Tablet & Mobile Layout Adaptations */
@@ -1205,11 +1266,45 @@
     padding: 8px 16px !important;
     width: calc(100% - 24px) !important;
     border-radius: 20px !important;
+    max-height: 60px !important;
+  }
+
+  .opt-a-body .site-header.menu-open {
+    max-height: 380px !important;
+  }
+
+  .opt-a-body .nav-inner {
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+  }
+
+  /* Center all container layout components below the navbar */
+  .opt-a-body .container {
+    width: 100% !important;
+    padding-left: 12px !important;
+    padding-right: 12px !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+
+  .opt-a-body .bento-grid {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 16px !important;
+    width: 100% !important;
   }
 
   /* Hide custom cursor completely on mobile screens */
   .opt-a-body .cbd-cursor {
     display: none !important;
+  }
+
+  /* Borderless hamburger icon on mobile */
+  .opt-a-body .nav-toggle {
+    border: none !important;
+    background: transparent !important;
+    box-shadow: none !important;
   }
 }
 
@@ -1252,7 +1347,8 @@
 }
 
 .partner-marquee-container {
-  width: 100vw !important;
+  width: 100% !important;
+  max-width: 100% !important;
   overflow: hidden !important;
   display: flex !important;
   position: relative !important;
