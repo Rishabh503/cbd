@@ -50,7 +50,7 @@ export default function Footer() {
     <footer>
       <div className="container footer-inner">
         <div style={{ width: "140px", height: "112px", margin: "0 auto 16px" }}>
-          <Logo />
+          <Logo style={{ filter: "brightness(0) invert(1)" }} />
         </div>
 
         <nav className="footer-nav" aria-label="Footer">

@@ -220,7 +220,7 @@ export default function Contact() {
                 </div>
 
                 <div className="quick-links-row">
-                  <a href="tel:+919826604691" className="quick-link-pill" title="Call Us">
+                  <a href="tel:+919871012714" className="quick-link-pill" title="Call Us">
                     <Phone style={{ width: "15px", height: "15px" }} />
                   </a>
                   <a href="mailto:contact@thecbd.in" className="quick-link-pill" title="Email Us">
