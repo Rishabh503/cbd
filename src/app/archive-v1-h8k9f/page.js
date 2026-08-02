@@ -37,7 +37,7 @@ export default function Home() {
   return (
     <>
       <a href="#main" className="skip-link">
-        Skip to content
+        Skip to content jaldi se
       </a>
       <CustomCursor />
       <Header />
